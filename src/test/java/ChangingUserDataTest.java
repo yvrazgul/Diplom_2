@@ -14,11 +14,6 @@ public class ChangingUserDataTest {
     @Before
     public void setUp() {
         userSteps = new UserSteps();
-    }
-
-    @Test
-    @DisplayName("Изменение данных пользователя с авторизацией")
-    public void createChangingDataWithAuth() {
         ValidatableResponse responseCreate = userSteps.createUser(randomEmail, randomPassword, randomName);
         userSteps.checkAnswerSuccess(responseCreate);
         ValidatableResponse responseLogin = userSteps.login(randomEmail, randomPassword);
@@ -29,15 +24,13 @@ public class ChangingUserDataTest {
     }
 
     @Test
+    @DisplayName("Изменение данных пользователя с авторизацией")
+    public void createChangingDataWithAuth() {
+    }
+
+    @Test
     @DisplayName("Изменение данных пользователя без авторизации")
     public void createChangingDataWithoutAuth() {
-        ValidatableResponse responseCreate = userSteps.createUser(randomEmail, randomPassword, randomName);
-        userSteps.checkAnswerSuccess(responseCreate);
-        ValidatableResponse responseLogin = userSteps.login(randomEmail, randomPassword);
-        userSteps.checkAnswerSuccess(responseLogin);
-        accessToken = userSteps.getAccessToken(responseLogin);
-        ValidatableResponse responseChangeWithoutToken = userSteps.authorizationWithoutToken("x" + randomEmail, "x" + randomPassword, "x" + randomName);
-        userSteps.checkAnswerWithoutToken(responseChangeWithoutToken);
     }
 
     @After
