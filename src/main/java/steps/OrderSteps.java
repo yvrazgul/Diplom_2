@@ -54,8 +54,8 @@ public class OrderSteps extends Client{
     @Step("Проверка ответа при создании заказа без ингредиентов")
     public void checkAnswerWithoutIngredients(ValidatableResponse validatableResponse) {
         validatableResponse
-                .body("success", is(false))
-                .statusCode(400);
+                .statusCode(400)
+                .body("success", is(false));
         String actualMessage = validatableResponse.extract().path("message").toString();
         Assert.assertEquals("Ingredient ids must be provided", actualMessage);
     }
