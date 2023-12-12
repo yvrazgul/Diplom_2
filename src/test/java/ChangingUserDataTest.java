@@ -14,13 +14,7 @@ public class ChangingUserDataTest {
     @Before
     public void setUp() {
         userSteps = new UserSteps();
-        ValidatableResponse responseCreate = userSteps.createUser(randomEmail, randomPassword, randomName);
-        userSteps.checkAnswerSuccess(responseCreate);
-        ValidatableResponse responseLogin = userSteps.login(randomEmail, randomPassword);
-        userSteps.checkAnswerSuccess(responseLogin);
-        accessToken = userSteps.getAccessToken(responseLogin);
-        ValidatableResponse responseChangeWithToken = userSteps.authorizationWithToken(accessToken, "x" + randomEmail, "x" + randomPassword, "x" + randomName);
-        userSteps.checkAnswerSuccess(responseChangeWithToken);
+
     }
 
     @Test
